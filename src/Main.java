@@ -16,8 +16,17 @@ public class Main {
             System.out.println(trago.ordinal() + " - " + trago.name().replace("_", " "));
         }
         // 4. obtenemos la opcion del usuario
-        Integer opcion = scanner.nextInt();
-        Tragos seleccionado = Tragos.values()[opcion];
+        Integer opcion=0;
+        Tragos seleccionado=Tragos.AGUA_TONICA;
+        while(true) {
+            try {
+                opcion = scanner.nextInt();
+                seleccionado = Tragos.values()[opcion];
+                break;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.err.println("Numero incorrecto, intenta denuevo con un numero del 1 al 7");
+            }
+        }
         // 5. creamos una instancia de trago
         Trago trago = new AguaTonica();
         switch(seleccionado) {
